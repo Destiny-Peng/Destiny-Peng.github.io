@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>个人主页 — 你的名字</title>
+		<title>个人主页</title>
 		<meta name="description" content="个人主页 — 这里展示我的项目与联系方式。" />
 		<link rel="stylesheet" href="assets/css/style.css" />
 	</head>
 	<body>
 		<header class="site-header">
 			<div class="container">
-				<h1 class="site-title">你的名字</h1>
+				<h1 class="site-title">记录</h1>
 				<nav class="site-nav">
 					<a href="#about">关于</a>
 					<a href="#projects">项目</a>
@@ -22,7 +22,7 @@
 		<main>
 			<section class="hero">
 				<div class="container">
-					<h2>你好，我是 你的名字</h2>
+					<h2></h2>
 					<p class="tagline">开发者 / 设计爱好者 / 开源贡献者</p>
 					<p><a class="cta" href="#projects">查看项目</a></p>
 				</div>
@@ -36,13 +36,47 @@
 			<section id="projects" class="container section">
 				<h3>项目</h3>
 				<ul class="projects-list">
-					<li>
-						<h4>项目名一</h4>
-						<p>项目简介。<a href="#">查看详细</a></p>
+					<li class="project-item">
+						<h4>第十八届全国大学生智能车竞赛 — 队员（2022年12月 – 2023年8月）</h4>
+						<p><strong>工作内容：</strong></p>
+						<ul>
+							<li>本人负责项目中的图片识别、逻辑判断的开发任务，使用NXP公司的视觉模块OpenART mini作为控制平台，语言为MicroPython。</li>
+							<li>目标识别任务：使用mobilenet_v2神经网络完成，在自建数据集上达到 95% 准确率，通过TensorFlow Lite量化部署，量化后模型大小压缩至 1.8MB，满足嵌入式实时推理需求。</li>
+							<li>上下位机通信：通过UART方式与下位机进行通信。</li>
+						</ul>
+						<p><strong>相关技能：</strong> 单片机开发（keil5、stm32cubemax）、通信协议（UART、IIC、SPI）、卷积神经网络（训练和量化部署）、OpenCV图像处理。</p>
+						<p><strong>成果：</strong> 第18届全国大学生智能车竞赛山东赛区省级二等奖。</p>
+						<div class="project-video">
+							<div class="video-box">视频占位：将来可替换为视频链接或本地视频（iframe 或 &lt;video&gt;）。</div>
+						</div>
 					</li>
-					<li>
-						<h4>项目名二</h4>
-						<p>项目简介。<a href="#">查看详细</a></p>
+
+					<li class="project-item">
+						<h4>HERO战队 — 成员（2023年9月至今）</h4>
+						<p><strong>工作内容：</strong></p>
+						<ul>
+							<li>负责能量机关自动击打部分设计，自瞄相关部分协助开发调试。开发环境为Ubuntu22.04，使用ROS2框架。</li>
+							<li style="margin-top:8px;"><img src="assets/images/hero_diagram.svg" alt="工作流程示意图" class="project-image"/></li>
+							<li>使用UART与固件进行上下位机间通信。</li>
+							<li>使用OpenCV、Eigen、Ceres Solver等进行运动模型建立及维护。通过PNP方法解算目标位姿后，根据情况使用卡尔曼滤波、最小二乘等优化方法建立和维护目标的运动模型，从而实现对目标的追踪。实战中自瞄命中率约 35%（实战距离1-3m），能量机关平均激活环数30环左右（7m目标平均落点误差6cm）。</li>
+						</ul>
+						<p><strong>相关技能：</strong> 视觉Slam基础（三维空间刚体运动、简单的非线性优化、视觉里程计）、Linux系统使用（Ubuntu）、ROS2开发。</p>
+						<p><strong>成果：</strong>
+							<ul>
+								<li>2024机甲大师超级对抗赛·区域赛（东部赛区）团队一等奖</li>
+								<li>2024机甲大师超级对抗赛·全国赛团队二等奖</li>
+								<li>2025机甲大师超级对抗赛·区域赛（东部赛区）团队一等奖</li>
+								<li>2025机甲大师超级对抗赛·全国赛团队二等奖</li>
+							</ul>
+						</p>
+						<div class="project-video">
+							<div class="video-box">
+								<p><a href="https://www.bilibili.com/video/BV1sYhxzyESp/?share_source=copy_web&t=627" target="_blank" rel="noopener">在 Bilibili 上观看：全国赛 第60场 北方工业大学 DreamTeam战队 VS 哈尔滨工业大学（威海） HERO战队（跳到 10:27）</a></p>
+								<div class="video-embed">
+									<iframe src="https://player.bilibili.com/player.html?bvid=BV1sYhxzyESp&page=1" frameborder="0" scrolling="no" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
 					</li>
 				</ul>
 			</section>

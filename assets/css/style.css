@@ -7,7 +7,7 @@
   --radius:12px;
 }
 *{box-sizing:border-box}
-html,body{height:100%}
+.html,body{height:100%}
 body{
   margin:0;
   font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial;
@@ -15,14 +15,22 @@ body{
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
 }
 .container{max-width:900px;margin:0 auto;padding:28px}
 .site-header{padding:18px 0}
 .site-title{margin:0;font-size:20px}
 .site-nav{float:right}
 .site-nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+.site-header{padding:18px 0}
+.site-title{margin:0;font-size:20px}
+.site-nav{float:right}
+.site-nav a{color:var(--muted);text-decoration:none;margin-left:16px}
 .hero{padding:56px 0;text-align:center}
 .hero h2{font-size:32px;margin:0 0 8px}
+.hero{display:flex;align-items:center;justify-content:center}
 .tagline{color:var(--muted);margin:0 0 16px}
 .cta{display:inline-block;padding:10px 18px;background:var(--accent);color:#042028;border-radius:10px;text-decoration:none}
 .section{background:rgba(255,255,255,0.03);margin:18px 0;padding:20px;border-radius:var(--radius)}
@@ -36,6 +44,11 @@ body{
   .container{padding:18px}
   .hero h2{font-size:24px}
 }
+
+/* Ensure main takes remaining space so short pages fill viewport */
+main{flex:1;display:flex;flex-direction:column}
+/* Make the hero occupy available space inside main when content is short */
+.hero{flex:1;padding:48px 0}
 
 /* Small utility */
 a{color:var(--accent)}

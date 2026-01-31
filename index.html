@@ -1,99 +1,160 @@
 <!doctype html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>个人主页</title>
-		<meta name="description" content="个人主页 — 这里展示我的项目与联系方式。" />
-		<link rel="stylesheet" href="assets/css/style.css" />
-	</head>
-	<body>
-		<header class="site-header">
-			<div class="container">
-				<h1 class="site-title">记录</h1>
-				<nav class="site-nav">
-					<a href="#about">关于</a>
-					<a href="#projects">项目</a>
-					<a href="#contact">联系</a>
-				</nav>
-			</div>
-		</header>
+  <head>
+	    <meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width,initial-scale=1" />
+	    <title>个人主页</title>
+	    <meta name="description" content="个人主页 — 这里展示我的项目与联系方式。" />
+	    <link rel="stylesheet" href="assets/css/style.css" />
+	  </head>
+	  <body>
+	    <header class="site-header">
+	      <div class="container">
+	        <h1 class="site-title">记录</h1>
+	        <nav class="site-nav">
+	          <a href="#about">关于</a>
+	          <a href="#projects">项目</a>
+	          <a href="#contact">联系</a>
+	        </nav>
+	      </div>
+	    </header>
 
-		<main>
-			<section class="hero">
+	    <main>
+	      <section class="hero section">
+	        <div class="container">
+	          <h2></h2>
+	          <p class="tagline">开发者 / 设计爱好者 / 开源贡献者</p>
+	          <p><a class="cta" href="#projects">查看项目</a></p>
+	        </div>
+	      </section>
+
+	      <section id="about" class="section">
+	        <div class="container">
+	          <h3>关于我</h3>
+	          <p>这里写一段简短的自我介绍：你的专业、兴趣、擅长的技术栈，以及你正在做的事情。</p>
+	        </div>
+	      </section>
+
+	      <section id="projects" class="section">
+	        <div class="container">
+	          <h3>项目</h3>
+	          <ul class="projects-list">
+	            <li class="project-item">
+	              <h4>第十八届全国大学生智能车竞赛 — 队员（2022年12月 – 2023年8月）</h4>
+	              <p><strong>工作内容：</strong></p>
+	              <ul>
+	                <li>本人负责项目中的图片识别、逻辑判断的开发任务，使用NXP公司的视觉模块OpenART mini作为控制平台，语言为MicroPython。</li>
+	                <li>目标识别任务：使用mobilenet_v2神经网络完成，在自建数据集上达到 95% 准确率，通过TensorFlow Lite量化部署，量化后模型大小压缩至 1.8MB，满足嵌入式实时推理需求。</li>
+	                <li>上下位机通信：通过UART方式与下位机进行通信。</li>
+	              </ul>
+	              <p><strong>相关技能：</strong> 单片机开发（keil5、stm32cubemax）、通信协议（UART、IIC、SPI）、卷积神经网络（训练和量化部署）、OpenCV图像处理。</p>
+	              <p><strong>成果：</strong> 第18届全国大学生智能车竞赛山东赛区省级二等奖。</p>
+	              <div class="project-video">
+	                <div class="video-box">视频占位：将来可替换为视频链接或本地视频（iframe 或 &lt;video&gt;）。</div>
+	              </div>
+	            </li>
+
+	            <li class="project-item">
+	              <h4>HERO战队 — 成员（2023年9月至今）</h4>
+	              <p><strong>工作内容：</strong></p>
+	              <ul>
+	                <li>负责能量机关自动击打部分设计，自瞄相关部分协助开发调试。开发环境为Ubuntu22.04，使用ROS2框架。</li>
+	                <li style="margin-top:8px;"><img src="assets/images/hero_diagram.svg" alt="工作流程示意图" class="project-image"/></li>
+	                <li>使用UART与固件进行上下位机间通信。</li>
+	                <li>使用OpenCV、Eigen、Ceres Solver等进行运动模型建立及维护。通过PNP方法解算目标位姿后，根据情况使用卡尔曼滤波、最小二乘等优化方法建立和维护目标的运动模型，从而实现对目标的追踪。实战中自瞄命中率约 35%（实战距离1-3m），能量机关平均激活环数30环左右（7m目标平均落点误差6cm）。</li>
+	              </ul>
+	              <p><strong>相关技能：</strong> 视觉Slam基础（三维空间刚体运动、简单的非线性优化、视觉里程计）、Linux系统使用（Ubuntu）、ROS2开发。</p>
+	              <p><strong>成果：</strong>
+	                <ul>
+	                  <li>2024机甲大师超级对抗赛·区域赛（东部赛区）团队一等奖</li>
+	                  <li>2024机甲大师超级对抗赛·全国赛团队二等奖</li>
+	                  <li>2025机甲大师超级对抗赛·区域赛（东部赛区）团队一等奖</li>
+	                  <li>2025机甲大师超级对抗赛·全国赛团队二等奖</li>
+	                </ul>
+	              </p>
+			  
+							<div class="project-flowchart">
+								<div class="flowchart-container">
+									<img src="assets/images/flowchart.png" alt="流程图" class="flowchart-image" />
+									<div class="flowchart-overlay" aria-hidden="false">
+										<div class="region" data-start="0" data-end="3" data-title="预处理" style="left:18%;top:3%;width:24%;height:90%"></div>
+										<div class="region" data-start="3" data-end="5" data-title="建模" style="left:44%;top:3%;width:24%;height:90%"></div>
+										<div class="region" data-start="5" data-end="15" data-title="火控" style="left:66%;top:3%;width:24%;height:90%"></div>
+									</div>
+									<div class="flowchart-caption" aria-live="polite"></div>
+								</div>
+							</div>
+		
+		              <div class="project-video">
+	                <div class="video-box">
+									<div class="video-embed">
+										<video id="project-video-hero" controls preload="metadata" width="560" height="315">
+											<source src="assets/video/2_h264.mp4" type="video/mp4">
+											您的浏览器不支持 video 标签。
+										</video>
+									</div>
+	                </div>
+	              </div>
+
+	            </li>
+	          </ul>
+	        </div>
+	      </section>
+
+			<!-- New topical sessions start -->
+			<section id="project-hero" class="section">
 				<div class="container">
-					<h2></h2>
-					<p class="tagline">开发者 / 设计爱好者 / 开源贡献者</p>
-					<p><a class="cta" href="#projects">查看项目</a></p>
+					<h3>Project: HERO-ROS2 Framework</h3>
+					<p>核心项目：侧重架构设计、模块划分与通信规范。描述 HERO-ROS2 框架的总体架构、节点划分、消息/服务设计与可复用性策略。</p>
 				</div>
 			</section>
 
-			<section id="about" class="container section">
-				<h3>关于我</h3>
-				<p>这里写一段简短的自我介绍：你的专业、兴趣、擅长的技术栈，以及你正在做的事情。</p>
+			<section id="algorithm-ekf" class="section">
+				<div class="container">
+					<h3>Algorithm: Motion Prediction &amp; EKF</h3>
+					<p>算法专题：侧重数学与状态估计。包含运动模型（常速/匀加速/非线性模型）、过程噪声建模、扩展卡尔曼滤波推导与实现细节、数值稳定性讨论。</p>
+				</div>
 			</section>
 
-			<section id="projects" class="container section">
-				<h3>项目</h3>
-				<ul class="projects-list">
-					<li class="project-item">
-						<h4>第十八届全国大学生智能车竞赛 — 队员（2022年12月 – 2023年8月）</h4>
-						<p><strong>工作内容：</strong></p>
-						<ul>
-							<li>本人负责项目中的图片识别、逻辑判断的开发任务，使用NXP公司的视觉模块OpenART mini作为控制平台，语言为MicroPython。</li>
-							<li>目标识别任务：使用mobilenet_v2神经网络完成，在自建数据集上达到 95% 准确率，通过TensorFlow Lite量化部署，量化后模型大小压缩至 1.8MB，满足嵌入式实时推理需求。</li>
-							<li>上下位机通信：通过UART方式与下位机进行通信。</li>
-						</ul>
-						<p><strong>相关技能：</strong> 单片机开发（keil5、stm32cubemax）、通信协议（UART、IIC、SPI）、卷积神经网络（训练和量化部署）、OpenCV图像处理。</p>
-						<p><strong>成果：</strong> 第18届全国大学生智能车竞赛山东赛区省级二等奖。</p>
-						<div class="project-video">
-							<div class="video-box">视频占位：将来可替换为视频链接或本地视频（iframe 或 &lt;video&gt;）。</div>
-						</div>
-					</li>
+			<section id="optimization-ceres" class="section">
+				<div class="container">
+					<h3>Optimization: Non-linear Modeling with Ceres</h3>
+					<p>优化专题：侧重运动学建模与非线性最小二乘。说明如何使用 Ceres Solver 建模残差、选择参数块、设计鲁棒损失函数与并行化策略。</p>
+				</div>
+			</section>
 
-					<li class="project-item">
-						<h4>HERO战队 — 成员（2023年9月至今）</h4>
-						<p><strong>工作内容：</strong></p>
-						<ul>
-							<li>负责能量机关自动击打部分设计，自瞄相关部分协助开发调试。开发环境为Ubuntu22.04，使用ROS2框架。</li>
-							<li style="margin-top:8px;"><img src="assets/images/hero_diagram.svg" alt="工作流程示意图" class="project-image"/></li>
-							<li>使用UART与固件进行上下位机间通信。</li>
-							<li>使用OpenCV、Eigen、Ceres Solver等进行运动模型建立及维护。通过PNP方法解算目标位姿后，根据情况使用卡尔曼滤波、最小二乘等优化方法建立和维护目标的运动模型，从而实现对目标的追踪。实战中自瞄命中率约 35%（实战距离1-3m），能量机关平均激活环数30环左右（7m目标平均落点误差6cm）。</li>
-						</ul>
-						<p><strong>相关技能：</strong> 视觉Slam基础（三维空间刚体运动、简单的非线性优化、视觉里程计）、Linux系统使用（Ubuntu）、ROS2开发。</p>
-						<p><strong>成果：</strong>
-							<ul>
-								<li>2024机甲大师超级对抗赛·区域赛（东部赛区）团队一等奖</li>
-								<li>2024机甲大师超级对抗赛·全国赛团队二等奖</li>
-								<li>2025机甲大师超级对抗赛·区域赛（东部赛区）团队一等奖</li>
+			<section id="engineering-lab" class="section">
+				<div class="container">
+					<h3>Engineering: Lab Infrastructure &amp; Methodology</h3>
+					<p>工程专题：侧重实验室管理与流程标准化。包括测试环境搭建、CI 流程、硬件在环（HIL）测试、版本管理与团队协作规范。</p>
+				</div>
+			</section>
+
+			<section id="technical-deepdives" class="section">
+				<div class="container">
+					<h3>Technical Deep Dives</h3>
+					<p>技能深度整理：选取若干技术点（如相机模型、PnP 解算、滤波器调优、量化部署实践），提供系统化的数学推导、实现要点与工程折中。</p>
+				</div>
+			</section>
+
+			<!-- New topical sessions end -->
+
+			<section id="contact" class="section">
+	        <div class="container">
+	          <h3>联系我</h3>
+	          <p>邮件：<a href="mailto:your.email@example.com">your.email@example.com</a></p>
+	          <p>GitHub：<a href="https://github.com/你的用户名" target="_blank" rel="noopener">github.com/你的用户名</a></p>
+	        </div>
+	      </section>
+	    </main>
+
+	    <footer class="site-footer">
+	      <div class="container">
+	        <small>© <span id="year"></span> 你的名字。托管于 GitHub Pages。</small>
+	      </div>
+	    </footer>
+
+	    <script src="assets/js/main.js"></script>
+	  </body>
+	</html>
 								<li>2025机甲大师超级对抗赛·全国赛团队二等奖</li>
-							</ul>
-						</p>
-						<div class="project-video">
-							<div class="video-box">
-								<p><a href="https://www.bilibili.com/video/BV1sYhxzyESp/?share_source=copy_web&t=627" target="_blank" rel="noopener">在 Bilibili 上观看：全国赛 第60场 北方工业大学 DreamTeam战队 VS 哈尔滨工业大学（威海） HERO战队（跳到 10:27）</a></p>
-								<div class="video-embed">
-									<iframe src="https://player.bilibili.com/player.html?bvid=BV1sYhxzyESp&page=1" frameborder="0" scrolling="no" allowfullscreen></iframe>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</section>
-
-			<section id="contact" class="container section">
-				<h3>联系我</h3>
-				<p>邮件：<a href="mailto:your.email@example.com">your.email@example.com</a></p>
-				<p>GitHub：<a href="https://github.com/你的用户名" target="_blank" rel="noopener">github.com/你的用户名</a></p>
-			</section>
-		</main>
-
-		<footer class="site-footer">
-			<div class="container">
-				<small>© <span id="year"></span> 你的名字。托管于 GitHub Pages。</small>
-			</div>
-		</footer>
-
-		<script src="assets/js/main.js"></script>
-	</body>
-</html>

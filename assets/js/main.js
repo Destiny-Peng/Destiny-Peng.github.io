@@ -8,10 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
   var video = document.getElementById("project-video-hero");
   if (!video) return;
 
-  var regions = Array.from(
-    document.querySelectorAll(".flowchart-overlay .region"),
-  );
-  var caption = document.querySelector(".flowchart-caption");
+  // Find the overlay and its local caption so we update the correct caption
+  var overlay = document.querySelector(".flowchart-overlay");
+  if (!overlay) return;
+  var regions = Array.from(overlay.querySelectorAll(".region"));
+  var caption = overlay
+    .closest(".flowchart-container")
+    .querySelector(".flowchart-caption");
 
   // Parse time ranges
   var parsed = regions.map(function (el) {

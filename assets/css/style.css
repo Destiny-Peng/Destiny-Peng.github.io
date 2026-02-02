@@ -1,9 +1,9 @@
 :root{
-  --bg:#609dff;
-  --card:#0b1220;
-  --muted:#9aa4b2;
-  --accent:#7dd3fc;
-  --text:#e6eef7;
+  --bg:#071026;      /* 深色背景起始 */
+  --card:#0b1930;    /* 卡片/面板颜色 */
+  --muted:#9fb3c8;   /* 次要文本 */
+  --accent:#ff7a59;  /* 强调色（橙色） */
+  --text:#e6eef7;    /* 主要文本 */
   --radius:12px;
 }
 *{box-sizing:border-box}
@@ -13,7 +13,7 @@ html,body{overflow-x:hidden}
 body{
   margin:0;
   font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial;
-  background:linear-gradient(180deg,#071029 0%, #0c1524 100%);
+  background:linear-gradient(180deg,#071026 0%, #071a2b 100%);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -34,7 +34,7 @@ body{
 .hero h2{font-size:32px;margin:0 0 8px}
 .hero{display:flex;align-items:center;justify-content:center}
 .tagline{color:var(--muted);margin:0 0 16px}
-.cta{display:inline-block;padding:10px 18px;background:var(--accent);color:#042028;border-radius:10px;text-decoration:none}
+.cta{display:inline-block;padding:10px 18px;background:var(--accent);color:#071026;border-radius:10px;text-decoration:none}
 .section{background:rgba(255,255,255,0.03);margin:18px 0;padding:0;overflow:hidden}
 /* Make section full-bleed across viewport */
 .section{position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw;border-radius:0}
@@ -80,10 +80,42 @@ a{color:var(--accent)}
 .flowchart-overlay .region{position:absolute;border:2px solid transparent;background:transparent;cursor:pointer;transition:all .2s ease;border-radius:6px;pointer-events:auto}
 .flowchart-overlay .region:focus{outline:2px dashed var(--accent)}
 .flowchart-overlay .region.active{border-color:var(--accent);box-shadow:0 8px 24px rgba(125,211,252,0.12);background:rgba(125,211,252,0.06)}
-.flowchart-caption{text-align:center;color:var(--muted);font-size:14px;margin-top:6px;min-height:20px}
+.flowchart-caption{
+  text-align:center;
+  color:var(--text);
+  font-size:14px;
+  margin-top:8px;
+  min-height:20px;
+  position:relative;
+  z-index:999; /* Ensure caption is above overlay */
+  font-weight:600;
+  display:block;
+}
 
 @media(max-width:720px){
   .flowchart-overlay .region{border-width:1px;border-radius:4px}
   .flowchart-caption{font-size:13px}
+}
+
+/* Separator between consecutive flowcharts */
+.project-flowchart + .project-flowchart{
+  border-top:2px solid rgba(255,255,255,0.10); /* 更粗、更明显的分割线 */
+  margin-top:22px;
+  padding-top:22px;
+}
+
+/* About section layout */
+.about-grid{display:flex;gap:20px;align-items:flex-start}
+.about-avatar{width:96px;height:96px;border-radius:50%;background:var(--accent);color:#042028;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;flex:0 0 96px}
+.about-content{flex:1}
+.about-bio{color:var(--muted);margin:0 0 12px;line-height:1.6}
+.about-skills{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.about-skills li{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+
+@media(max-width:720px){
+  .about-grid{flex-direction:column;align-items:center;text-align:center}
+  .about-avatar{margin-bottom:8px}
+  .about-content{width:100%}
+  .about-skills{justify-content:center}
 }
 

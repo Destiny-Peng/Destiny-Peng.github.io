@@ -14,6 +14,7 @@
 	        <nav class="site-nav">
 	          <a href="#about">关于</a>
 	          <a href="#projects">项目</a>
+	          <a href="#modeling">预测与建模</a>
 	          <a href="#contact">联系</a>
 	        </nav>
 	      </div>
@@ -22,9 +23,12 @@
 	    <main>
 	      <section class="hero section">
 	        <div class="container">
-	          <h2></h2>
-	          <p class="tagline">开发者 / 设计爱好者 / 开源贡献者</p>
-	          <p><a class="cta" href="#projects">查看项目</a></p>
+	          <h2>彭奕然 (Yiran Peng)</h2>
+	          <p class="tagline">自动化专业在读 / 视觉算法与机器人技术探索者</p>
+	          <p>
+	            <a class="cta" href="#projects">查看项目</a>
+	            <a class="cta" href="这里填你的博客链接" style="margin-left: 10px; background-color: #555;">🔗 阅读博客</a>
+	          </p>
 	        </div>
 	      </section>
 
@@ -35,7 +39,14 @@
 					<div class="about-grid">
 						<div class="about-avatar" aria-hidden="true">JP</div>
 						<div class="about-content">
-							  <p class="about-bio">我是彭奕然，目前在<strong>哈尔滨工业大学（威海）</strong>攻读自动化专业。 我过去两年的核心经历围绕 RoboMaster 机甲大师赛展开，曾担任 HERO 战队的视觉算法组组长。在技术上，我主要负责战队基于 ROS2 Humble 的上位机架构迭代，解决了以往系统耦合度高的问题。我的算法工作侧重于动态目标检测与运动建模，利用 Ceres Solver 进行非线性拟合，并应用扩展卡尔曼滤波 (EKF) 实现对目标的位姿解算与追踪预测。在实际成果方面：<br>• 自瞄与能量机关：实战中自瞄命中率约 35% (1-3m)；能量机关（Buff）平均激活 30 环左右，7m 目标平均落点误差控制在 6cm。<br>• 工程规范：作为 718 实验室及视觉组负责人，我主导使用 Git/Gitee 进行代码版本控制，并利用语雀沉淀技术文档，协调 30+ 人规模的跨学科团队开发规范。</p>
+							<div class="about-bio">
+								<p>我是<strong>彭奕然</strong>，目前在<strong>哈尔滨工业大学（威海）</strong>攻读自动化专业。</p>
+								<p>我过去两年的核心经历围绕 RoboMaster 机甲大师赛展开，曾担任 <strong>HERO 战队的视觉算法组组长</strong>。在技术上，我主要负责战队基于 <strong>ROS2 Humble</strong> 的上位机架构迭代，解决了以往系统耦合度高的问题。</p>
+								<p>我的算法工作侧重于动态目标检测与运动建模，利用 <strong>Ceres Solver</strong> 进行非线性拟合，并应用<strong>扩展卡尔曼滤波 (EKF)</strong> 实现对目标的位姿解算与追踪预测。</p>
+								<p style="margin-top: 10px;"><strong>在实际成果与团队统筹方面：</strong><br>
+								• <strong>实战表现：</strong>自瞄与能量机关实战命中率约 35% (1-3m)；能量机关（Buff）平均激活 30 环左右，7m 目标平均落点误差控制在 6cm。<br>
+								• <strong>工程规范：</strong>作为 718 实验室及视觉组负责人，我主导使用 Git/Gitee 进行代码版本控制，并利用语雀沉淀技术文档，协调 30+ 人规模的跨学科团队开发规范。</p>
+							</div>
 							<ul class="about-skills">
 								<li>嵌入式开发（STM32、MicroPython）</li>
 								<li>视觉算法（OpenCV、PnP、滤波）</li>
@@ -85,6 +96,60 @@
 					<p>项目链接：<a href="https://github.com/Destiny-Peng/rm_buff" target="_blank" rel="noopener">https://github.com/Destiny-Peng/rm_buff</a></p>
 				</li>
 	          </ul>
+	        </div>
+	      </section>
+
+	      <section id="modeling" class="section">
+	        <div class="container">
+	          <h3>预测与建模 (Prediction & Modeling)</h3>
+	          <div class="modeling-content" style="line-height: 1.8;">
+	            <p><strong>预测与建模</strong>是我在视觉算法工作中的核心。以下为该部分的算法要点与技术细节，主要解决动态目标检测、运动估计与位姿追踪预测问题。</p>
+
+	            <h4>1. 机器人自瞄运动预测 (Robot Auto-Aim Prediction)</h4>
+	            <p>本环节主要解决在动态战场及敌方高频机动环境下，基于滤波估计与云台动力学，抵消系统延迟与子弹飞行时间，实现精准预测击打。</p>
+	            <ul>
+	              <li><strong>运动状态建模与 EKF 滤波：</strong>将目标状态构建为包含车辆中心三维位置与速度、装甲板偏航角及角速度、旋转半径的九维参数模型：<code>X = [x<sub>c</sub>, v<sub>xc</sub>, y<sub>c</sub>, v<sub>yc</sub>, z<sub>c</sub>, v<sub>zc</sub>, θ, ω, r]<sup>T</sup></code>。利用扩展卡尔曼滤波 (EKF) 进行非线性观测更新，实现了对复杂机动目标的稳健跟踪与中心位姿估计。</li>
+	              <li><strong>反陀螺策略与装甲板跳变检测：</strong>针对赛场常见的底盘高频旋转（“小陀螺”）策略，设计了专用的装甲板跳变处理逻辑。定义 <code>Δθ = |θ<sub>tracked</sub> - θ<sub>another</sub>|</code>，借助多装甲板位置几何关联及测距逻辑，在偏航角突变时仍能维持状态收敛，有效实现反陀螺预测模式切换。</li>
+	              <li><strong>弹道补偿与提前量解算：</strong>在解算端引入特定的火控弹道补偿器，结合空气阻力与重力下坠模型对子弹飞行时间 (TOF) 进行迭代求解。基于相机与云台的高精度<strong>手眼标定</strong>与<strong>时间戳软硬同步</strong>，综合视觉捕获(<code>t<sub>v</sub></code>)、预测(<code>t<sub>p</sub></code>)与发弹延迟(<code>t<sub>f</sub></code>)推演目标未来位姿，最终下发高置信度开火指令。</li>
+	            </ul>
+
+	            <h4>2. 能量机关（Buff）运动学建模 (Energy Organ Modeling)</h4>
+	            <p>针对能量机关复杂的变速圆周运动，我设计了一套集几何拟合、函数参数辨识于一体的方案。</p>
+	            <ul>
+	              <li><strong>空间几何建模：</strong>
+	                <ul>
+	                  <li><strong>圆轨迹拟合：</strong>使用 Ceres Solver 进行非线性最小二乘拟合，累计 80 个采样点后进行首次圆心拟合。</li>
+	                  <li><strong>数据清洗：</strong>引入异常数据筛选机制，根据标准距离值筛选 y 轴偏移过大的目标点，确保拟合圆心的稳定性。</li>
+	                </ul>
+	              </li>
+	              <li><strong>变速规律拟合（针对大能量机关）：</strong>
+	                <ul>
+	                  <li><strong>目标函数：</strong>拟合速度函数 <code>spd = a * sin(ω * t + ϕ) + 2.09 - a</code> 中的未知参数 <code>a</code>, <code>ω</code>, <code>ϕ</code>。</li>
+	                  <li><strong>数学推导技巧：</strong>为了降低角速度微分带来的噪声放大，采用了定积分方法推导角度函数，从而消除了积分常数 C，将问题转化为三参数的角度函数拟合。</li>
+	                  <li><strong>优化策略：</strong>分为“初次拟合”与“校正拟合”，若预测角度与实际观测角度连续 5 帧误差超过阈值，则重新调用 Ceres 求解最优参数。</li>
+	                </ul>
+	              </li>
+	              <li><strong>滤波与补偿：</strong>
+	                <ul>
+	                  <li><strong>滑动窗口滤波：</strong>对原始角度数据进行滑动窗口平滑，减少因取图阻塞（5ms~400ms 波动）带来的时间戳噪声，误差控制在 1.5% 以内。</li>
+	                  <li><strong>插值补偿：</strong>在数据缺失时，利用二次多项式插值或已拟合的角度函数进行预测值补全。</li>
+	                </ul>
+	              </li>
+	            </ul>
+
+	            <h4>3. 弹道解算与击打逻辑 (Ballistic & Firing Logic)</h4>
+	            <ul>
+	              <li><strong>迭代预测机制：</strong>通过二至三次迭代计算子弹飞行时间 (TOF)，不断缩小“预测位置计算出的飞行时间”与“实际物理飞行时间”的差距，从而获得精确的提前量。</li>
+	              <li><strong>自动发弹判定：</strong>设计了基于换叶状态、发弹间隔及云台对位状态的逻辑门控，防止云台未到位或频繁换叶导致的无效射击。</li>
+	            </ul>
+
+	            <h4 style="margin-top: 1.5em; padding-top: 1em; border-top: 1px solid #eee;">量化指标总结 (Key Metrics)</h4>
+	            <ul>
+	              <li><strong>拟合精度：</strong>大能量机关参数拟合误差分别为：振幅 <code>a</code> (1.095%)、角速度 <code>ω</code> (0.672%)、相位 <code>ϕ</code> (1.592%)。</li>
+	              <li><strong>解算效率：</strong>圆拟合单次耗时约 1.08ms，角度函数拟合耗时约 4.6ms。</li>
+	              <li><strong>实战表现：</strong>自瞄命中率约 35%，能量机关平均激活 30 环，7m 落点误差控制在 6cm。</li>
+	            </ul>
+	          </div>
 	        </div>
 	      </section>
 
